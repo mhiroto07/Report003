@@ -2,10 +2,10 @@ package jp.ac.uryukyu.ie.e185713;
 
 public class LivingThing {
     //フィード変数
-    String name;
-    int hitPoint;
-    int attack;
-    boolean dead;
+    private String name;
+    private int hitPoint;
+    private int attack;
+    private boolean dead;
 
     //コンストラクタの引数
     public LivingThing(String name, int hitPoint, int attack){
@@ -34,7 +34,7 @@ public class LivingThing {
      * @param e 攻撃対象
      */
     public void attack(LivingThing e){
-        if(hitPoint > 0){
+        if(isDead() == false){
             int damage = (int)(Math.random() * attack);
             System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, e.getName(), damage);
             e.wounded(damage);
@@ -52,6 +52,29 @@ public class LivingThing {
             dead = true;
             System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", name);
         }
+    }
+
+    //カプセル.name,hitPoint,attack,dead
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public int getHitPoint(){
+        return hitPoint;
+    }
+    public void setHitPoint(int hitpoint){
+        this.hitPoint = hitpoint;
+    }
+
+    public int getAttack(){
+        return attack;
+    }
+    public void setAttack(int attack){
+        this.attack = attack;
+    }
+
+    public void setDead(boolean dead){
+        this.dead = dead;
     }
 
 }
